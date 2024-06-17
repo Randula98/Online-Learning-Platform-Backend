@@ -18,11 +18,11 @@ export const updateAdmin = async (id, admin) => {
         (id, admin, { new: true });
 }
 
-export const deleteAdmin = async (id) => {
+const deleteAdmin = async (id) => {
     return await Admin.findByIdAndDelete(id);
 }
 
-export const login = async (email, password) => {
+const login = async (email, password) => {
     const admin = await Admin.findOne
         ({ email: email });
     if (!admin) {
@@ -42,5 +42,6 @@ export default {
     getAdminById,
     createAdmin,
     updateAdmin,
-    deleteAdmin
+    deleteAdmin,
+    login
 };
