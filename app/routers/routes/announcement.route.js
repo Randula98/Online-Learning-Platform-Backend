@@ -7,7 +7,7 @@
 
 import express from 'express';
 import announcementController from '../../controllers/announcement.controller.js';
-import { verifyToken } from '../../middlewares/user.middleware.js';
+import { verifyToken } from '../../middlewares/User.middleware.js';
 
 const router = express.Router();
 

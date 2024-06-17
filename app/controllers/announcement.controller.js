@@ -1,8 +1,8 @@
-import announcementServices from "../services/announcement.services.js";
+import announcementService from "../services/announcement.service.js";
 
 export const getAllAnnouncements = async (req, res) => {
     try {
-        const announcements = await announcementServices.getAllAnnouncements();
+        const announcements = await announcementService.getAllAnnouncements();
         res.status(200).json(announcements);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -11,7 +11,7 @@ export const getAllAnnouncements = async (req, res) => {
 
 export const getAnnouncementById = async (req, res) => {
     try {
-        const announcement = await announcementServices.getAnnouncementById(req.params.id);
+        const announcement = await announcementService.getAnnouncementById(req.params.id);
         res.status(200).json(announcement);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -20,7 +20,7 @@ export const getAnnouncementById = async (req, res) => {
 
 export const createAnnouncement = async (req, res) => {
     try {
-        const announcement = await announcementServices.createAnnouncement(req.body);
+        const announcement = await announcementService.createAnnouncement(req.body);
         res.status(200).json(announcement);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -29,7 +29,7 @@ export const createAnnouncement = async (req, res) => {
 
 export const updateAnnouncement = async (req, res) => {
     try {
-        const announcement = await announcementServices.updateAnnouncement(req.params.id, req.body);
+        const announcement = await announcementService.updateAnnouncement(req.params.id, req.body);
         res.status(200).json(announcement);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -38,7 +38,7 @@ export const updateAnnouncement = async (req, res) => {
 
 export const deleteAnnouncement = async (req, res) => {
     try {
-        const announcement = await announcementServices.deleteAnnouncement(req.params.id);
+        const announcement = await announcementService.deleteAnnouncement(req.params.id);
         res.status(200).json(announcement);
     } catch (error) {
         res.status(500).json({ message: error.message });
