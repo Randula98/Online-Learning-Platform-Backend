@@ -9,9 +9,9 @@ import swaggerJSDoc from 'swagger-jsdoc'
 import swaggerUi from 'swagger-ui-express'
 
 import { options } from './config/swagger.js'
-// import { sessionMiddleware } from './app/middlewares/Session.middleware.js'
+import { sessionMiddleware } from './app/middlewares/session.middleware.js'
 
-// import routers from "./app/routers/index.js";
+import routers from "./app/routers/index.js";
 
 const swaggerEndpoint = '/api-docs'
 
@@ -22,9 +22,9 @@ app.use(bodyParser.json());
 
 app.use(swaggerEndpoint, swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)))
 
-// routers(app);
+routers(app);
 
-// app.use(sessionMiddleware); 
+app.use(sessionMiddleware); 
 
 const URL = process.env.REACT_APP_MONGODB_URI;
 

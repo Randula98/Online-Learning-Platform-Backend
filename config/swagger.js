@@ -10,6 +10,21 @@ export const options = {
         servers: [
             {
                 url: `http://localhost:${process.env.PORT}`,
+                description: 'Local server',
+            },
+        ],
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: 'http',
+                    scheme: 'bearer',
+                    bearerFormat: 'JWT',
+                },
+            },
+        },
+        security: [
+            {
+                bearerAuth: [],
             },
         ],
     },
