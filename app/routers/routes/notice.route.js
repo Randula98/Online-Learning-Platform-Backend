@@ -2,7 +2,7 @@
  * @swagger
  * tags:
  *   name: Notice
- *   description: API endpoints for managing notices
+ *   description: API endpoints for managing course notices
  */
 
 import express from 'express';
