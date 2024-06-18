@@ -1,6 +1,6 @@
 import adminService from "../services/admin.service.js";
 
-export const getAllAdmins = async (req, res) => {
+const getAllAdmins = async (req, res) => {
     try {
         const admins = await adminService.getAllAdmins();
         res.status(200).json(admins);
@@ -9,7 +9,7 @@ export const getAllAdmins = async (req, res) => {
     }
 }
 
-export const getAdminById = async (req, res) => {
+const getAdminById = async (req, res) => {
     try {
         const admin = await adminService.getAdminById(req.params.id);
         res.status(200).json(admin);
@@ -18,7 +18,7 @@ export const getAdminById = async (req, res) => {
     }
 }
 
-export const createAdmin = async (req, res) => {
+const createAdmin = async (req, res) => {
     try {
         const admin = await adminService.createAdmin(req.body);
         res.status(200).json(admin);
@@ -36,7 +36,7 @@ export const updateAdmin = async (req, res) => {
     }
 }
 
-export const deleteAdmin = async (req, res) => {
+const deleteAdmin = async (req, res) => {
     try {
         const admin = await adminService.deleteAdmin(req.params.id);
         res.status(200).json(admin);
@@ -45,7 +45,7 @@ export const deleteAdmin = async (req, res) => {
     }
 }
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         const admin = await adminService.login(email, password);

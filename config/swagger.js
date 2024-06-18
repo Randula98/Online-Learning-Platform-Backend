@@ -2,6 +2,7 @@ import dotenv from "dotenv/config";
 
 export const options = {
     definition: {
+        openapi: '3.0.0',
         info: {
             title: 'Coursework Node.js & Express API with Swagger',
             version: '1.0.0',

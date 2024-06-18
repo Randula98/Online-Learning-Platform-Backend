@@ -1,6 +1,6 @@
 import announcementService from "../services/announcement.service.js";
 
-export const getAllAnnouncements = async (req, res) => {
+const getAllAnnouncements = async (req, res) => {
     try {
         const announcements = await announcementService.getAllAnnouncements();
         res.status(200).json(announcements);
@@ -9,7 +9,7 @@ export const getAllAnnouncements = async (req, res) => {
     }
 }
 
-export const getAnnouncementById = async (req, res) => {
+const getAnnouncementById = async (req, res) => {
     try {
         const announcement = await announcementService.getAnnouncementById(req.params.id);
         res.status(200).json(announcement);
@@ -18,7 +18,7 @@ export const getAnnouncementById = async (req, res) => {
     }
 }
 
-export const createAnnouncement = async (req, res) => {
+const createAnnouncement = async (req, res) => {
     try {
         const announcement = await announcementService.createAnnouncement(req.body);
         res.status(200).json(announcement);
@@ -27,7 +27,7 @@ export const createAnnouncement = async (req, res) => {
     }
 }
 
-export const updateAnnouncement = async (req, res) => {
+const updateAnnouncement = async (req, res) => {
     try {
         const announcement = await announcementService.updateAnnouncement(req.params.id, req.body);
         res.status(200).json(announcement);
@@ -36,7 +36,7 @@ export const updateAnnouncement = async (req, res) => {
     }
 }
 
-export const deleteAnnouncement = async (req, res) => {
+const deleteAnnouncement = async (req, res) => {
     try {
         const announcement = await announcementService.deleteAnnouncement(req.params.id);
         res.status(200).json(announcement);
