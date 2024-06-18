@@ -1,24 +1,24 @@
 import Student from "../models/student.model.js";
 import { createToken } from "../middlewares/User.middleware.js";
 
-export const getAllStudents = async () => {
+const getAllStudents = async () => {
     return await Student.find().populate("enrolledCourses");
 }
 
-export const getStudentById = async (id) => {
+const getStudentById = async (id) => {
     return await Student.findById(id).populate("enrolledCourses");
 }
 
-export const createStudent = async (student) => {
+const createStudent = async (student) => {
     return await Student.create(student);
 }
 
-export const updateStudent = async (id, student) => {
+const updateStudent = async (id, student) => {
     return await Student.findByIdAndUpdate
         (id, student, { new: true });
 }
 
-export const deleteStudent = async (id) => {
+const deleteStudent = async (id) => {
     return await Student.findByIdAndDelete(id);
 }
 

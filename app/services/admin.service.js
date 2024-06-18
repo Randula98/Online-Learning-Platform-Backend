@@ -1,19 +1,19 @@
 import Admin from "../models/admin.model.js";
 import { createToken } from "../middlewares/User.middleware.js";
 
-export const getAllAdmins = async () => {
+const getAllAdmins = async () => {
     return await Admin.find();
 }
 
-export const getAdminById = async (id) => {
+const getAdminById = async (id) => {
     return await Admin.findById(id);
 }
 
-export const createAdmin = async (admin) => {
+const createAdmin = async (admin) => {
     return await Admin.create(admin);
 }
 
-export const updateAdmin = async (id, admin) => {
+const updateAdmin = async (id, admin) => {
     return await Admin.findByIdAndUpdate
         (id, admin, { new: true });
 }
