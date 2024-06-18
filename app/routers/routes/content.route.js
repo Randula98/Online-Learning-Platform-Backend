@@ -46,7 +46,7 @@ const router = express.Router();
 
 /**
  * @swagger
- * /content:
+ * /contents:
  *   get:
  *     summary: Retrieve a list of contents
  *     tags: [Content]
@@ -66,7 +66,7 @@ router.get('/', verifyToken, contentController.getAllContents);
 
 /**
  * @swagger
- * /content/{id}:
+ * /contents/{id}:
  *   get:
  *     summary: Get a content by ID
  *     tags: [Content]
@@ -93,7 +93,7 @@ router.get('/:id', verifyToken, contentController.getContentById);
 
 /**
  * @swagger
- * /content:
+ * /contents:
  *   post:
  *     summary: Create a new content
  *     tags: [Content]
@@ -119,7 +119,7 @@ router.post('/', verifyToken, contentController.createContent);
 
 /**
  * @swagger
- * /content/{id}:
+ * /contents/{id}:
  *   put:
  *     summary: Update an existing content
  *     tags: [Content]
@@ -154,7 +154,7 @@ router.put('/:id', verifyToken, contentController.updateContent);
 
 /**
  * @swagger
- * /content/{id}:
+ * /contents/{id}:
  *   delete:
  *     summary: Delete a content by ID
  *     tags: [Content]
@@ -177,7 +177,7 @@ router.delete('/:id', verifyToken, contentController.deleteContent);
 
 /**
  * @swagger
- * /content/course/{courseId}:
+ * /contents/course/{courseId}:
  *   get:
  *     summary: Retrieve contents by course ID
  *     tags: [Content]
