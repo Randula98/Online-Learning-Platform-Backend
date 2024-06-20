@@ -13,11 +13,9 @@ const contentSchema = new Schema({
     },
     fileUrl: {
         type: String,
-        required: true
     },
     recordingUrl: {
         type: String,
-        required: true
     },
     course: {
         type: Schema.Types.ObjectId,

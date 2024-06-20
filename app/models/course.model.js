@@ -3,43 +3,43 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const courseSchema = new Schema({
-    courseName :{
+    courseName: {
         type: String,
         required: true
     },
-    displayName:{
+    displayName: {
         type: String,
         required: true
     },
-    moduleCode:{
+    moduleCode: {
         type: String,
         required: true
     },
-    academicYear:{
+    academicYear: {
         type: String,
         required: true
     },
-    academicSemester:{
+    academicSemester: {
         type: String,
         required: true
     },
-    specialization:{
+    specialization: {
         type: String,
         required: true
     },
-    courseYear:{
+    courseYear: {
         type: String,
         required: true
     },
-    courseMonth:{
+    courseMonth: {
         type: String,
         required: true
     },
-    notices:[{
+    notices: [{
         type: Schema.Types.ObjectId,
         ref: 'Notice'
     }],
-    content:[{
+    content: [{
         type: Schema.Types.ObjectId,
         ref: 'Content'
     }],
