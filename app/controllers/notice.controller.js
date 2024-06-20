@@ -2,7 +2,7 @@ import noticeService from "../services/notice.service.js";
 
 const getAllNotices = async (req, res) => {
     try {
-        const notices = await noticeService.getAllNotices();
+        const notices = (await noticeService.getAllNotices()).reverse();
         res.status(200).json(notices);
     } catch (error) {
         res.status(500).json({ message: error.message });

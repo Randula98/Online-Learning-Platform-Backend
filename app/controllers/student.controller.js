@@ -2,7 +2,7 @@ import studentService from "../services/student.service.js";
 
 const getAllStudents = async (req, res) => {
     try {
-        const students = await studentService.getAllStudents();
+        const students = (await studentService.getAllStudents()).reverse();
         res.status(200).json(students);
     } catch (error) {
         res.status(500).json({ message: error.message });
