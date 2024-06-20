@@ -1,25 +1,27 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const Schema = mongoose.Schema;
 
 const adminSchema = new Schema({
-    fname : {
+    fname: {
         type: String,
         required: true
     },
-    lname : {
+    lname: {
         type: String,
         required: true
     },
-    contactNo:{
-        type: Number,
-        required: true
-    },
-    email : {
+    contactNo: {
         type: String,
         required: true
     },
-    password : {
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
         type: String,
         required: true
     },

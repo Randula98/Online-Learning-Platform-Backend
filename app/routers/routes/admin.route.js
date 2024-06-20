@@ -143,7 +143,7 @@ router.get('/:id', verifyToken, adminController.getAdminById);
  *       401:
  *         description: Unauthorized
  */
-router.post('/', verifyToken, adminController.createAdmin);
+router.post('/', adminController.createAdmin);
 
 /**
  * @swagger

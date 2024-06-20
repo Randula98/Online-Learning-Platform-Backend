@@ -23,19 +23,28 @@ const deleteAdmin = async (id) => {
 }
 
 const login = async (email, password) => {
-    const admin = await Admin.findOne
-        ({ email: email });
-    if (!admin) {
-        return ({ user: false, password: false, message: 'User not found' });
-    }
-    admin.comparePassword(password, (error, match) => {
-        if (!match) {
-            return ({ user: true, password: false, message: 'Wrong Password' })
+    try {
+        const admin = await Admin.findOne({ email: email });
+        if (!admin) {
+            return { user: false, password: false, message: 'User not found' };
         }
+        const isMatch = await new Promise((resolve, reject) => {
+            admin.comparePassword(password, (error, match) => {
+                if (error) return reject(error);
+                resolve(match);
+            });
+        });
+
+        if (!isMatch) {
+            return { user: true, password: false, message: 'Wrong Password' };
+        }
+
         const token = createToken(admin);
-        return ({ user: true, password: true, token: token, admin: admin })
-    });
-}
+        return { user: true, password: true, token: token, type: 'admin' };
+    } catch (error) {
+        throw new Error('Error during login process');
+    }
+};
 
 export default {
     getAllAdmins,
