@@ -47,11 +47,40 @@ const login = async (email, password) => {
     }
 };
 
+//enroll student to a course
+const enrollStudent = async (studentId, courseId) => {
+    try {
+        const student = await Student.findById(studentId);
+        console.log(student);
+        student.enrolledCourses.push(courseId);
+        await student.save();
+        return student;
+    } catch (error) {
+        throw new Error('Error during enrollment process');
+    }
+}
+
+//unenroll student from a course
+const unenrollStudent = async (studentId, courseId) => {
+    console.log(studentId, courseId);
+    try {
+        const student = await Student.findById(studentId);
+        console.log(student);
+        student.enrolledCourses.pull(courseId);
+        await student.save();
+        return student;
+    } catch (error) {
+        throw new Error('Error during unenrollment process');
+    }
+}
+
 export default {
     getAllStudents,
     getStudentById,
     createStudent,
     updateStudent,
     deleteStudent,
-    login
+    login,
+    enrollStudent,
+    unenrollStudent
 };

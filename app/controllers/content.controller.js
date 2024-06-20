@@ -44,6 +44,10 @@ const updateContent = async (req, res) => {
 const deleteContent = async (req, res) => {
     try {
         const content = await contentService.deleteContent(req.params.id);
+        //remove content from course
+        const course = await courseService.getCourseById(content.course);
+        course.content = course.content.filter(contentId => contentId != content._id);
+        await course.save();
         res.status(200).json(content);
     } catch (error) {
         res.status(500).json({ message: error.message });

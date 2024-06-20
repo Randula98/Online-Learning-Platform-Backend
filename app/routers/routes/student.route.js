@@ -203,4 +203,67 @@ router.delete('/:id', verifyToken, studentController.deleteStudent);
  */
 router.post('/login', studentController.login);
 
+/**
+ * @swagger
+ * /students/enroll:
+ *   post:
+ *     summary: Enroll a student in a course
+ *     tags: [Student]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               studentId:
+ *                 type: string
+ *                 description: The ID of the student
+ *               courseId:
+ *                 type: string
+ *                 description: The ID of the course to enroll in
+ *     responses:
+ *       200:
+ *         description: Enrollment successful
+ *       401:
+ *         description: Unauthorized
+ *       400:
+ *         description: Bad Request
+ */
+
+router.post('/enroll', verifyToken, studentController.enrollStudent);
+
+/**
+ * @swagger
+ * /students/unenroll:
+ *   post:
+ *     summary: Unenroll a student from a course
+ *     tags: [Student]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               studentId:
+ *                 type: string
+ *                 description: The ID of the student
+ *               courseId:
+ *                 type: string
+ *                 description: The ID of the course to unenroll from
+ *     responses:
+ *       200:
+ *         description: Unenrollment successful
+ *       401:
+ *         description: Unauthorized
+ *       400:
+ *         description: Bad Request
+ */
+router.post('/unenroll', verifyToken, studentController.unenrollStudent);
+
 export default router;

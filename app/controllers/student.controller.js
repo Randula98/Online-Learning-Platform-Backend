@@ -55,11 +55,31 @@ const login = async (req, res) => {
     }
 }
 
+const enrollStudent = async (req, res) => {
+    try {
+        const student = await studentService.enrollStudent(req.body.studentId, req.body.courseId);
+        res.status(200).json(student);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+const unenrollStudent = async (req, res) => {
+    try {
+        const student = await studentService.unenrollStudent(req.body.studentId, req.body.courseId);
+        res.status(200).json(student);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 export default {
     getAllStudents,
     getStudentById,
     createStudent,
     updateStudent,
     deleteStudent,
-    login
+    login,
+    enrollStudent,
+    unenrollStudent
 };

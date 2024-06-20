@@ -44,6 +44,10 @@ const updateNotice = async (req, res) => {
 const deleteNotice = async (req, res) => {
     try {
         const notice = await noticeService.deleteNotice(req.params.id);
+        //remove notice from course
+        const course = await courseService.getCourseById(notice.course);
+        course.notices = course.notices.filter(noticeId => noticeId != notice._id);
+        await course.save();
         res.status(200).json(notice);
     } catch (error) {
         res.status(500).json({ message: error.message });
