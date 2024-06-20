@@ -91,7 +91,7 @@ const router = express.Router();
  *               items:
  *                 $ref: '#/components/schemas/Course'
  */
-router.get('/', verifyToken, courseController.getAllCourses);
+router.get('/', courseController.getAllCourses);
 
 /**
  * @swagger

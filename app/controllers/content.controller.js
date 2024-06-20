@@ -1,4 +1,5 @@
 import contentService from "../services/content.service.js";
+import courseService from "../services/course.service.js";
 
 const getAllContents = async (req, res) => {
     try {
@@ -21,6 +22,10 @@ const getContentById = async (req, res) => {
 const createContent = async (req, res) => {
     try {
         const content = await contentService.createContent(req.body);
+        //add content to course
+        const course = await courseService.getCourseById(req.body.course);
+        course.content.push(content._id);
+        await course.save();
         res.status(200).json(content);
     } catch (error) {
         res.status(500).json({ message: error.message });

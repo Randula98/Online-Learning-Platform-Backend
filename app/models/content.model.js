@@ -3,19 +3,23 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const contentSchema = new Schema({
-    week:{
+    week: {
         type: String,
         required: true
     },
-    topic:{
+    topic: {
         type: String,
         required: true
     },
-    fileUrl:{
+    fileUrl: {
         type: String,
         required: true
     },
-    course:{
+    recordingUrl: {
+        type: String,
+        required: true
+    },
+    course: {
         type: Schema.Types.ObjectId,
         ref: 'Course'
     },

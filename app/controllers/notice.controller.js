@@ -1,4 +1,5 @@
 import noticeService from "../services/notice.service.js";
+import courseService from "../services/course.service.js";
 
 const getAllNotices = async (req, res) => {
     try {
@@ -21,6 +22,10 @@ const getNoticeById = async (req, res) => {
 const createNotice = async (req, res) => {
     try {
         const notice = await noticeService.createNotice(req.body);
+        //add notice to course
+        const course = await courseService.getCourseById(req.body.course);
+        course.notices.push(notice._id);
+        await course.save();
         res.status(200).json(notice);
     } catch (error) {
         res.status(500).json({ message: error.message });
