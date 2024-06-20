@@ -2,7 +2,7 @@ import announcementService from "../services/announcement.service.js";
 
 const getAllAnnouncements = async (req, res) => {
     try {
-        const announcements = await announcementService.getAllAnnouncements();
+        const announcements = (await announcementService.getAllAnnouncements()).reverse();
         res.status(200).json(announcements);
     } catch (error) {
         res.status(500).json({ message: error.message });
